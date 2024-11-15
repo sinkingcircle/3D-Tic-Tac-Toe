@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  perspective: 1000px;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 
+    0 0 10px rgba(97, 218, 251, 0.5),
+    0 0 20px rgba(97, 218, 251, 0.3),
+    0 0 30px rgba(97, 218, 251, 0.2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #61dafb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titlePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes titlePulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.game-board {
+  transform-style: preserve-3d;
+  transform: rotateX(60deg) rotateZ(-45deg);
+  transition: transform 0.5s ease;
+  margin-top: 12rem;
+}
+
+.board-3d {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  width: 600px;
+  height: 600px;
+}
+
+.board-row {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.square {
+  width: 120px;
+  height: 120px;
+  font-size: 48px;
+  font-weight: bold;
+  background-color: rgba(97, 218, 251, 0.7);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform: translateZ(20px);
+}
+
+.square:hover {
+  background-color: rgba(97, 218, 251, 0.9);
+  transform: translateZ(30px);
+}
+
+.square.winner {
+  animation: winPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes winPulse {
+  0% {
+    background-color: #4CAF50;
+    box-shadow: 0 0 20px #4CAF50;
+    transform: translateZ(15px) scale(1);
+  }
+  100% {
+    background-color: #45a049;
+    box-shadow: 0 0 40px #45a049;
+    transform: translateZ(25px) scale(1.05);
+  }
+}
+
+.status {
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  transform: translateZ(50px);
+  margin-left: 3rem;
+  color: #61dafb;
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #61dafb;
+  border: none;
+  color: #282c34;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #4fa8d5;
+  transform: scale(1.05);
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* Add this new rule for a hover effect on the board */
+.game:hover .board {
+  transform: rotateX(35deg) rotateZ(-15deg);
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: rgba(97, 218, 251, 0.7);
+  border: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.square:hover {
+  background-color: rgba(97, 218, 251, 0.9);
+}
+
+.status {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Add this to your existing CSS */
+
+.reset-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #61dafb;
+  border: none;
+  color: #282c34;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  bottom: 1;
+  margin-bottom: 2rem;
+  position: fixed;
+  bottom: 90px;
+  margin-left: 2rem;
+}
+
+.reset-button:hover {
+  background-color: #4fa8d5;
+  transform: scale(1.05);
+}
+
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  width: 240px;
+  cursor: move;
+  user-select: none;
+}
+
+.controls-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: move;
+}
+
+.control {
+  cursor: default;
+}
+
+/* Remove the hover effect on the board since we now have manual controls */
+.game:hover .board {
+  transform: none;
+}
+
+/* Update the board style to remove the fixed transform */
+.board {
+  transition: transform 0.3s ease;
+}
