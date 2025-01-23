@@ -135,6 +135,7 @@ export default function Game() {
   return (
     <div className="game">
       <h1>3D Tic-Tac-Toe</h1>
+        <p> By Vikranth Jagdish </p>
       <div className="game-container">
         <div className="board-container">
           <Board xRotation={xRotation} zRotation={zRotation} />
